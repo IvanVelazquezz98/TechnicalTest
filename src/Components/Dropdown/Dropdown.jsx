@@ -38,8 +38,6 @@ export default function DropdownInput({changeTermDropdown}) {
           <DropdownItem onClick={openModal} >
             Crear Cliente
           </DropdownItem>
-
-          <DropdownItem />
           <DropdownItem divider />
           <DropdownItem onClick={() => changeTermDropdown('nombre')} >Nombre</DropdownItem>
           <DropdownItem onClick={() => changeTermDropdown('razon_social')} >Razon Social</DropdownItem>

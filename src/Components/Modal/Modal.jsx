@@ -3,21 +3,21 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from "react-bootstrap/Form";
 import { FcCheckmark } from "react-icons/fc"
-import {createClient} from "../../Utils/CreateClient"
+import { createClient } from "../../Utils/CreateClient"
 
 
 export default function Example(showClose) {
   const [show, setShow] = useState(true);
   // const handleShow = () => setShow(true);
-  const [ loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  const [ input, setInput ] = useState({
+  const [input, setInput] = useState({
     nombre: '',
     razon_social: '',
     nit: '',
     telefono: '',
     codigo: '',
-    
+
   })
   const [errors, setErrors] = useState({
     nombre: '',
@@ -25,50 +25,50 @@ export default function Example(showClose) {
     nit: '',
     telefono: '',
     codigo: '',
-})
+  })
 
-  function validate(input){
+  function validate(input) {
 
     let errors = {}
     input.nombre
-    ? (errors.nombre = "")
-    :(errors.nombre) = "Your CLIENT needs a name!"
+      ? (errors.nombre = "")
+      : (errors.nombre) = "Your CLIENT needs a name!"
 
     input.razon_social
-    ? (errors.razon_social = "")
-    : (errors.razon_social = "Your client needs a description!")
+      ? (errors.razon_social = "")
+      : (errors.razon_social = "Your client needs a description!")
 
     input.nit
-    ? (errors.nit = "")
-    : (errors.nit = "Your client need a release date")
+      ? (errors.nit = "")
+      : (errors.nit = "Your client need a release date")
     input.telefono
-    ? (errors.telefono = "")
-    :(errors.telefono = "Your client need a rating")
+      ? (errors.telefono = "")
+      : (errors.telefono = "Your client need a rating")
 
-   input.codigo 
-   ? (errors.codigo = "")
-   : (errors.codigo = "Your client need a image!")
- return errors
-    }
+    input.codigo
+      ? (errors.codigo = "")
+      : (errors.codigo = "Your client need a image!")
+    return errors
+  }
 
-    function handleClose(){
-      setShow(false)
-    }
+  function handleClose() {
+    setShow(false)
+  }
 
-    function handleChange(e){
-      // e.preventDefault();
-       setInput({
-           ...input,
-           [e.target.name]: e.target.value
-       })
-       setShow(true)
-       setErrors(validate({
-           ...input,
-           [e.target.name]: e.target.value
-       }))
-   }
+  function handleChange(e) {
+    // e.preventDefault();
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value
+    })
+    setShow(true)
+    setErrors(validate({
+      ...input,
+      [e.target.name]: e.target.value
+    }))
+  }
 
-   const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
     await createClient(input)
@@ -106,11 +106,8 @@ export default function Example(showClose) {
         <Modal.Header closeButton onClick={handleClose} >
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        {/* <Button variant="primary" onClick={handleShow}>
-        Create Client
-      </Button> */}
         <Modal.Body>
-        <Form.Group className="mb-3">
+          <Form.Group className="mb-3">
             <Form.Label>Nombre: </Form.Label>
             <Form.Control
               type="nombre"
@@ -121,7 +118,7 @@ export default function Example(showClose) {
               required
             />
             {!errors.nombre && (<FcCheckmark />)}
-          </Form.Group> 
+          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Razon Social: </Form.Label>
             <Form.Control
@@ -133,7 +130,7 @@ export default function Example(showClose) {
               required
             />
             {!errors.razon_social && (<FcCheckmark />)}
-          </Form.Group> 
+          </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Nit: </Form.Label>
@@ -146,19 +143,19 @@ export default function Example(showClose) {
               required
             />
             {!errors.nit && (<FcCheckmark />)}
-          </Form.Group> 
+          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Telefono: </Form.Label>
             <Form.Control
-              type="telofono"
+              type="telefono"
               id="telefono"
-              name="telofono"
+              name="telefono"
               value={input.telefono}
               onChange={(e) => handleChange(e)}
               required
             />
             {!errors.telefono && (<FcCheckmark />)}
-          </Form.Group> 
+          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Codigo: </Form.Label>
             <Form.Control
@@ -170,8 +167,8 @@ export default function Example(showClose) {
               required
             />
             {!errors.codigo && (<FcCheckmark />)}
-          </Form.Group>  
-          </Modal.Body>
+          </Form.Group>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleSubmit}>
             Crear
