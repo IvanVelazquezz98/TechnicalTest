@@ -4,8 +4,6 @@ import Dropdown from './Components/Dropdown/Dropdown'
 import Search from './Components/Search/Search';
 
 
-
-
 function App() {
  
   const [term, setTerm] = useState('nombre')
@@ -18,9 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      
-      <Search changeTermDropdown={changeTermDropdown} term={term}/>
-      <Dropdown changeTermDropdown={changeTermDropdown} />
+      <Search changeTermDropdown={changeTermDropdown} term={term}/><Dropdown changeTermDropdown={changeTermDropdown} />  
     </div>
   );
 }

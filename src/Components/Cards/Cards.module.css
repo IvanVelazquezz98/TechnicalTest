@@ -3,8 +3,8 @@
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    width: 14rem; 
-    height: 18.5rem;
+    width: 17rem; 
+    height: 21.5rem;
     align-items: center;
     border-width: 0.5rem;
     border-color: #dfd7f5 ;
@@ -20,8 +20,8 @@
     cursor:default;
 }
 .image {
-    width: 14rem;
-    height: 4.5rem;
+    width: 17rem;
+    height: 5rem;
     border-radius: 10px;
     object-fit: cover;
     display:flex

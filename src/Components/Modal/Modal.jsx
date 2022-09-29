@@ -104,7 +104,7 @@ export default function Example(showClose) {
 
       <Modal show={show}>
         <Modal.Header closeButton onClick={handleClose} >
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Crear Cliente</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mb-3">

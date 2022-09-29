@@ -18,9 +18,7 @@ export async function getData() {
     }
 
 }
-    // tare todo de firebase
-    // setLista((tiene) => [...previous, ...cl]);
-
+//Otras alternativas en la busqueda de hacer el scroll
     export async function searchLimit(){
 
         const updateState = async (response) => {

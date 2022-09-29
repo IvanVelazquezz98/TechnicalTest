@@ -1,4 +1,4 @@
-.gameContainer {
+.objectContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -183,3 +183,32 @@ body.dark{
     background-color: #080101;
     color: bisque;
 }
+
+.inputContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.imput{
+    border-bottom: 2px;
+    border-color: #784fe7;
+    border-radius: 5px;
+    width:8rem;
+}
+
+.botonreload {
+    text-decoration:none;
+    color:#080101;
+    background-color :#784fe7;
+    border-radius: 00.5rem;
+    border-color: #080101;
+    flex-direction: row;
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    transition: all 1s;
+}
+

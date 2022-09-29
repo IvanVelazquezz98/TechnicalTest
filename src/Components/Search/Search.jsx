@@ -1,15 +1,14 @@
-import react, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx'
 import { getData } from '../../Utils/GetData'
 import Cards from '../Cards/Cards'
 import useLazyLoad from '../LazyLoading/useLazyLoad';
-import {LoadingPosts} from '../Loading/LoadingPost';
-import { searchLimit, traermas } from '../../Utils/GetData'
+import { LoadingPosts } from '../Loading/LoadingPost';
 import styles from './Search.module.css'
 
 
 const NUM_PER_PAGE = 13;
-const TOTAL_PAGES = 5;
+const TOTAL_PAGES = 3;
 
 function Search({ changeTermDropdown, term }) {
   const [dataDb, setData] = useState([])
@@ -18,28 +17,25 @@ function Search({ changeTermDropdown, term }) {
   const triggerRef = useRef(null)
 
   const onGrabData = (currentPage) => {
-    // if(data.legth > dataDb.lenght){
-    //     return
-    //   }
-    
+
+
     return new Promise((resolve) => {
-  
-        const data = dataDb.slice( 
-        ((currentPage - 1)%TOTAL_PAGES) * NUM_PER_PAGE,
-        NUM_PER_PAGE * (currentPage%TOTAL_PAGES)
-         ) ;
-        //  let filter = data.filter()
-        //  console.log('filter', filter)
-        console.log(data);
-        resolve(data);
- 
-        })}
+
+      const data = dataDb.slice(
+        ((currentPage - 1) % TOTAL_PAGES) * NUM_PER_PAGE,
+        NUM_PER_PAGE * (currentPage % TOTAL_PAGES)
+      );
+      console.log(data);
+      resolve(data);
+
+    })
+  }
 
 
-  const {data, loading} = useLazyLoad({triggerRef,onGrabData})
-  console.log('datalazy',data)
+  const { data, loading } = useLazyLoad({ triggerRef, onGrabData })
+  console.log('datalazy', data)
 
- 
+
 
   async function getClients() {
     const getFilteredData = await getData()
@@ -62,20 +58,11 @@ function Search({ changeTermDropdown, term }) {
 
   return (
     <div className={styles.firstContainer}>
-
-      <div>
-        <input type="text" placeholder='Filter..'
+      <div className={styles.inputContainer}>
+        <input className={styles.input} type="text" placeholder='Filter..'
           onChange={event => { setSearchTerm(event.target.value) }} />
       </div>
-      <div className={styles.gameContainer}>
-
-      {/* <InfiniteScroll 
-            dataLength={dataDb.legth}//new
-           pageStart={0}
-           loadMore={loading}
-            hasMore={true || false}
-            loader={<div className="loader" key={0}>Loading ...</div>}
-        > */}
+      <div className={styles.objectContainer}>
 
         {data ?
           data.filter((val) => {
@@ -84,10 +71,10 @@ function Search({ changeTermDropdown, term }) {
             } else if (val?.[term].toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
               return val
             }
-            
+
           }).map(element => {
             return (
-            
+
               <Cards
                 nombre={element.nombre ? element.nombre : <p>-</p>}
                 razon_social={element.razon_social ? element.razon_social : <p>-</p>}
@@ -101,11 +88,11 @@ function Search({ changeTermDropdown, term }) {
             )
 
           }
-         
+
           ) : <p>Loading...</p>}
-        {/* </InfiniteScroll> */}
-          <div ref={triggerRef} className={clsx('trigger' , {visible:false})}> <LoadingPosts /></div>
-          
+       
+        <div ref={triggerRef} className={clsx('trigger', { visible: false })}> <LoadingPosts /></div>
+
       </div>
     </div>
 
