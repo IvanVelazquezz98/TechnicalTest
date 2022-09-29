@@ -6,11 +6,11 @@ import styles from './Dropdown.module.css'
 
 
 
-export default function DropdownInput({changeTermDropdown}) {
+export default function DropdownInput({changeTermDropdown ,handleRenderSearch}) {
 
   const [dropdown, setDropdown] = useState(false);
   const [show, setShow] = useState(false)
-
+  
 
   const abrirCerrarDropdown = () => {
     setDropdown(!dropdown)
@@ -30,7 +30,7 @@ export default function DropdownInput({changeTermDropdown}) {
 
       <br></br>
       <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown}>
-        <DropdownToggle className={styles.dropdownContent} caret >
+        <DropdownToggle onClick={() => handleRenderSearch()} className={styles.dropdownContent} caret >
           Open drowdown 
         </DropdownToggle>
         <DropdownMenu >

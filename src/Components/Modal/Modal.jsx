@@ -4,8 +4,9 @@ import Modal from 'react-bootstrap/Modal';
 import Form from "react-bootstrap/Form";
 import { FcCheckmark } from "react-icons/fc"
 import { createClient } from "../../Utils/CreateClient"
-
-
+import Loader from '../Loading/Loader'
+import styles from  './Modal.module.css'
+import {validate} from './validateInput'
 export default function Example(showClose) {
   const [show, setShow] = useState(true);
   // const handleShow = () => setShow(true);
@@ -20,36 +21,16 @@ export default function Example(showClose) {
 
   })
   const [errors, setErrors] = useState({
-    nombre: '',
-    razon_social: '',
-    nit: '',
-    telefono: '',
-    codigo: '',
+    nombre: 'inicio',
+    razon_social: 'inicio',
+    nit: 'inicio',
+    telefono: 'inicio',
+    codigo: 'inicio',
   })
 
-  function validate(input) {
+  const [errorCreate, seterrorCreate] = useState(false)
 
-    let errors = {}
-    input.nombre
-      ? (errors.nombre = "")
-      : (errors.nombre) = "Your CLIENT needs a name!"
 
-    input.razon_social
-      ? (errors.razon_social = "")
-      : (errors.razon_social = "Your client needs a description!")
-
-    input.nit
-      ? (errors.nit = "")
-      : (errors.nit = "Your client need a release date")
-    input.telefono
-      ? (errors.telefono = "")
-      : (errors.telefono = "Your client need a rating")
-
-    input.codigo
-      ? (errors.codigo = "")
-      : (errors.codigo = "Your client need a image!")
-    return errors
-  }
 
   function handleClose() {
     setShow(false)
@@ -71,6 +52,29 @@ export default function Example(showClose) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
+    let charactersMax = 60
+
+
+    if (!input.nombre) {
+      seterrorCreate(true)
+      return
+    }
+    if (!input.name) {
+      seterrorCreate(true)
+      return
+    }
+    if (input.name < charactersMax) {
+      seterrorCreate(true)
+      return
+    }
+    if (!input.razon_social) {
+      seterrorCreate(true)
+      return
+    }
+    if (input.nit.length <= 6) {
+      seterrorCreate(true)
+      return
+    }
     await createClient(input)
     setLoading(false)
     handleClose(false)
@@ -117,7 +121,8 @@ export default function Example(showClose) {
               onChange={(e) => handleChange(e)}
               required
             />
-            {!errors.nombre && (<FcCheckmark />)}
+             {errors.nombre === "inicio" ? null :
+                  errors.nombre !== "error" && errors.nombre !== "error" ? (<FcCheckmark />) : null}
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Razon Social: </Form.Label>
@@ -129,7 +134,8 @@ export default function Example(showClose) {
               onChange={(e) => handleChange(e)}
               required
             />
-            {!errors.razon_social && (<FcCheckmark />)}
+            {errors.razon_social === "inicio" ? null :
+                  errors.razon_social !== "error" ? (<FcCheckmark />) : null}
           </Form.Group>
 
           <Form.Group className="mb-3">
@@ -142,7 +148,8 @@ export default function Example(showClose) {
               onChange={(e) => handleChange(e)}
               required
             />
-            {!errors.nit && (<FcCheckmark />)}
+            {errors.nit === "inicio" ? null :
+                  errors.nit !== "error" ? (<FcCheckmark />) : null}
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Telefono: </Form.Label>
@@ -154,7 +161,8 @@ export default function Example(showClose) {
               onChange={(e) => handleChange(e)}
               required
             />
-            {!errors.telefono && (<FcCheckmark />)}
+            {errors.telefono === "inicio" ? null :
+                  errors.telefono !== "error" ? (<FcCheckmark />) : null}
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Codigo: </Form.Label>
@@ -166,9 +174,11 @@ export default function Example(showClose) {
               onChange={(e) => handleChange(e)}
               required
             />
-            {!errors.codigo && (<FcCheckmark />)}
+            {errors.codigo === "inicio" ? null :
+                  errors.codigo !== "error" ? (<FcCheckmark />) : null}
           </Form.Group>
         </Modal.Body>
+        {loading ? <Loader className={styles.loader} /> : null}
         <Modal.Footer>
           <Button variant="primary" onClick={handleSubmit}>
             Crear

@@ -5,10 +5,11 @@ import Cards from '../Cards/Cards'
 import useLazyLoad from '../LazyLoading/useLazyLoad';
 import { LoadingPosts } from '../Loading/LoadingPost';
 import styles from './Search.module.css'
+import Loader from '../Loading/Loader';
 
 
 const NUM_PER_PAGE = 13;
-const TOTAL_PAGES = 3;
+const TOTAL_PAGES = 4;
 
 function Search({ changeTermDropdown, term }) {
   const [dataDb, setData] = useState([])
@@ -17,29 +18,21 @@ function Search({ changeTermDropdown, term }) {
   const triggerRef = useRef(null)
 
   const onGrabData = (currentPage) => {
-
-
     return new Promise((resolve) => {
-
       const data = dataDb.slice(
         ((currentPage - 1) % TOTAL_PAGES) * NUM_PER_PAGE,
         NUM_PER_PAGE * (currentPage % TOTAL_PAGES)
       );
       console.log(data);
       resolve(data);
-
     })
   }
-
 
   const { data, loading } = useLazyLoad({ triggerRef, onGrabData })
   console.log('datalazy', data)
 
-
-
   async function getClients() {
     const getFilteredData = await getData()
-
     return setData(getFilteredData)
   }
 
@@ -59,8 +52,10 @@ function Search({ changeTermDropdown, term }) {
   return (
     <div className={styles.firstContainer}>
       <div className={styles.inputContainer}>
-        <input className={styles.input} type="text" placeholder='Filter..'
-          onChange={event => { setSearchTerm(event.target.value) }} />
+          
+        <input className={styles.input} type="text" placeholder={'Filters by ..' + ' ' + term }
+          onChange={event => { setSearchTerm(event.target.value) }} 
+          />
       </div>
       <div className={styles.objectContainer}>
 
@@ -76,11 +71,11 @@ function Search({ changeTermDropdown, term }) {
             return (
 
               <Cards
-                nombre={element.nombre ? element.nombre : <p>-</p>}
-                razon_social={element.razon_social ? element.razon_social : <p>-</p>}
-                nit={element.nit ? element.nit : <p>-</p>}
-                telefono={element.telefono ? element.telefono : <p>-</p>}
-                codigo={element.codigo ? element.codigo : <p>-</p>}
+                nombre={element.nombre}
+                razon_social={element.razon_social}
+                nit={element.nit}
+                telefono={element.telefono}
+                codigo={element.codigo}
                 key={element.id}
                 e={element}>
               </Cards>
@@ -89,8 +84,8 @@ function Search({ changeTermDropdown, term }) {
 
           }
 
-          ) : <p>Loading...</p>}
-       
+          ) : <Loader/>}
+
         <div ref={triggerRef} className={clsx('trigger', { visible: false })}> <LoadingPosts /></div>
 
       </div>
