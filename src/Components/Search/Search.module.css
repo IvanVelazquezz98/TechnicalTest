@@ -1,0 +1,185 @@
+.gameContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.Link {
+    text-decoration: none;
+}
+
+.background {
+    background-position: center; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    overflow: hidden;
+    height: 100%; 
+    scroll-behavior: smooth;
+    background-attachment: fixed;
+}
+
+.firstContainer {
+    background-color:rgb(194, 51, 51);
+    flex-direction: row;
+    align-items: center;
+    justify-content: baseline;
+    height: 10rem;
+    padding: 1rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 5rem;
+    padding-top: 0;
+    margin-top: 0;
+    padding-top: 8rem;
+    width: 100%;
+    top: +60px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.genre {
+    display: inline;
+    display: flex;
+    flex-direction: row;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 18rem; 
+    height: 60vh;
+    align-items: center;
+    border-width: 0.5rem;
+    border-color: #784fe7;
+    border: #784fe7;
+    border-radius: 12px;
+    transition: transform .5s;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 2px;
+    margin-left: 2px;
+    background-color: transparent ;
+    text-decoration: none;
+}
+
+
+.createGame{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+}
+
+.botonCreateGame{
+    cursor: pointer;
+    text-decoration:none;
+    font-weight:12px;
+    font-size:12px;
+    color:#080101;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:12px;
+    padding-right:12px;
+    background-color:#784fe7;
+    border-radius: 00.5rem;
+    transition: transform .7s;
+    border-color: #080101;
+   
+}
+
+.botonCreateGame:hover{
+    transform: scale(1.05) ;
+    background:#784fe7;
+    box-shadow: 0 0 10px #080808 ;
+    transition-delay: .1s;
+    color: rgb(3, 3, 1);
+    
+}
+
+.home{
+    cursor: pointer;
+    text-decoration:none;
+    font-weight:12px;
+    font-size:12px;
+    color:#080101;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:12px;
+    padding-right:12px;
+    background-color:#784fe7;
+    border-radius: 00.5rem;
+    transition: transform .7s;
+    border-color: #080101;
+   
+}
+
+.home:hover{
+    transform: scale(1.05) ;
+    background:#784fe7;
+    box-shadow: 0 0 10px #0c0c0b ;
+    transition-delay: .2s;
+    color: rgb(7, 7, 1);
+}
+
+.about{
+    cursor: pointer;
+    text-decoration:none;
+    font-weight:12px;
+    font-size:12px;
+    color:#080101;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:12px;
+    padding-right:12px;
+    background-color:#784fe7;
+    border-radius: 00.5rem;
+    transition: transform .7s;
+    border-color: #080101;
+    justify-content: right;
+    float: right;
+}
+
+.about:hover{
+    transform: scale(1.05) ;
+    background:#784fe7;
+    box-shadow: 0 0 10px #0c0c0b ;
+    transition-delay: .2s;
+    color: rgb(7, 7, 1);
+}
+
+.background{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNpZGmRSKMR6V1UrjxA1mSj6EOTXQIfbZDPg&usqp=CAU");
+    background-position: center; 
+    background-size :cover ;
+    background-repeat: no-repeat;
+    width: 100%;
+    
+    height: 100%; 
+    
+}
+.switch{
+    cursor: pointer;
+    text-decoration:none;
+    font-weight:12px;
+    font-size:12px;
+    color:#080101;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:12px;
+    padding-right:12px;
+    background-color:#784fe7;
+    border-radius: 1000px;
+    border-color: #080101;
+    border:none;
+    position: relative;
+    outline: none;
+
+}
+
+body.dark{
+    background-color: #080101;
+    color: bisque;
+}

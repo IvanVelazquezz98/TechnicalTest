@@ -18,8 +18,9 @@ function App() {
 
   return (
     <div className="App">
-      <Dropdown changeTermDropdown={changeTermDropdown} />
+      
       <Search changeTermDropdown={changeTermDropdown} term={term}/>
+      <Dropdown changeTermDropdown={changeTermDropdown} />
     </div>
   );
 }
