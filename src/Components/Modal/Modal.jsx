@@ -174,7 +174,7 @@ export default function ModalInput({ showClose, closeModal }) {
           This is a danger alert—check it out!
         </div> : null}
         <Modal.Footer>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button className='btn btn-secondary' onClick={handleSubmit}>
             Crear
           </Button>
         </Modal.Footer>
