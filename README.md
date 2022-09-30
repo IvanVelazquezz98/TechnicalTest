@@ -13,4 +13,10 @@ Desarrollar usando reactjs un componente de tipo dropdown (o combobox)
 - El proyecto debe correrse en un contenedor de docker
 - Adjuntar también dentro del repositorio, capturas de pantalla de la solución funcionando
 
-tenemos 48 hrs para poder desarrollar el challenge, si tenes alguna duda puedo colaborarte
+///////////////////////////////////////
+
+Nota del programador: Me la pase muy bien resolviendo su prueba técnica, todos los requisitos están completos, espero que pronto estemos trabajando juntos. ¡Un saludo!
+
+pd:No pude hacer screen del momento en que se hace el scroll, pero está funcionando perfecto, incluso se puede probar, muchas gracias!
+
+contacto: velazquez.ivan.e98@gmail.com
