@@ -8,14 +8,14 @@ export function validate(input) {
   if (!input.nombre) {
     errors.nombre = "error"
   }
-  if (input.nombre.legth === 0) {
+  if (input.nombre.legth <= 4) {
     errors.nombre = "error"
   }
-  if (input.nombre < charactersMax) {
-    errors.nombre = ""
+  if (input.nombre > charactersMax) {
+    errors.nombre = "else"
   }
   else {
-    errors.nombre = "error"
+    errors.nombre = ""
   }
 
   if (!input.razon_social) {
@@ -61,11 +61,8 @@ export function validate(input) {
   if (input.codigo.legth <= 0) {
     errors.codigo = "error"
   }
-  if (input.codigo < charactersMax) {
-    errors.codigo = ""
-  }
   else {
-    errors.codigo = "error"
+    errors.codigo = ""
   }
 
   return errors

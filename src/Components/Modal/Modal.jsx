@@ -5,11 +5,11 @@ import Form from "react-bootstrap/Form";
 import { FcCheckmark } from "react-icons/fc"
 import { createClient } from "../../Utils/CreateClient"
 import Loader from '../Loading/Loader'
-import styles from  './Modal.module.css'
-import {validate} from './validateInput'
-export default function Example(showClose) {
+import styles from './Modal.module.css'
+import { validate } from './validateInput'
+
+export default function ModalInput({ showClose, closeModal }) {
   const [show, setShow] = useState(true);
-  // const handleShow = () => setShow(true);
   const [loading, setLoading] = useState(false)
 
   const [input, setInput] = useState({
@@ -30,9 +30,12 @@ export default function Example(showClose) {
 
   const [errorCreate, seterrorCreate] = useState(false)
 
-
+  const handleReload = () => {
+    window.location.reload();
+  }
 
   function handleClose() {
+    closeModal()
     setShow(false)
   }
 
@@ -51,33 +54,21 @@ export default function Example(showClose) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setLoading(true)
     let charactersMax = 60
 
-
-    if (!input.nombre) {
-      seterrorCreate(true)
-      return
+    if (!input.nombre || !input.nombre
+      || !input.razon_social || !input.nit) {
+      e.preventDefault()
+      return alert('Algo salio mal.. :c')
     }
-    if (!input.name) {
-      seterrorCreate(true)
-      return
+    else {
+      e.preventDefault()
+      seterrorCreate(false)
+      await createClient(input)
+      closeModal()
+      handleClose(false)
+      return handleReload()
     }
-    if (input.name < charactersMax) {
-      seterrorCreate(true)
-      return
-    }
-    if (!input.razon_social) {
-      seterrorCreate(true)
-      return
-    }
-    if (input.nit.length <= 6) {
-      seterrorCreate(true)
-      return
-    }
-    await createClient(input)
-    setLoading(false)
-    handleClose(false)
   }
 
   const optionsInput = [
@@ -121,8 +112,8 @@ export default function Example(showClose) {
               onChange={(e) => handleChange(e)}
               required
             />
-             {errors.nombre === "inicio" ? null :
-                  errors.nombre !== "error" && errors.nombre !== "error" ? (<FcCheckmark />) : null}
+            {errors.nombre === "inicio" ? null :
+              errors.nombre !== "error" ? (<FcCheckmark />) : null}
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Razon Social: </Form.Label>
@@ -135,7 +126,7 @@ export default function Example(showClose) {
               required
             />
             {errors.razon_social === "inicio" ? null :
-                  errors.razon_social !== "error" ? (<FcCheckmark />) : null}
+              errors.razon_social !== "error" ? (<FcCheckmark />) : null}
           </Form.Group>
 
           <Form.Group className="mb-3">
@@ -149,7 +140,7 @@ export default function Example(showClose) {
               required
             />
             {errors.nit === "inicio" ? null :
-                  errors.nit !== "error" ? (<FcCheckmark />) : null}
+              errors.nit !== "error" ? (<FcCheckmark />) : null}
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Telefono: </Form.Label>
@@ -162,7 +153,7 @@ export default function Example(showClose) {
               required
             />
             {errors.telefono === "inicio" ? null :
-                  errors.telefono !== "error" ? (<FcCheckmark />) : null}
+              errors.telefono !== "error" ? (<FcCheckmark />) : null}
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Codigo: </Form.Label>
@@ -175,10 +166,13 @@ export default function Example(showClose) {
               required
             />
             {errors.codigo === "inicio" ? null :
-                  errors.codigo !== "error" ? (<FcCheckmark />) : null}
+              errors.codigo !== "error" ? (<FcCheckmark />) : null}
           </Form.Group>
         </Modal.Body>
-        {loading ? <Loader className={styles.loader} /> : null}
+        {loading ? <Loader className={styles.loaderContainer} /> : null}
+        {errorCreate ? <div class="alert alert-danger" role="alert">
+          This is a danger alert—check it out!
+        </div> : null}
         <Modal.Footer>
           <Button variant="primary" onClick={handleSubmit}>
             Crear

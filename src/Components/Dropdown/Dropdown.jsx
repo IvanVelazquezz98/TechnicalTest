@@ -19,13 +19,16 @@ export default function DropdownInput({changeTermDropdown ,handleRenderSearch}) 
     openModal()
   }
   
+  function closeModal(){
+    setShow(false)
+  }
   async function openModal() {
-    show == true ? setShow(false) : setShow(true)
+     setShow(true)
   }
 
   return (
     <div className={styles.mainContainer}>
-      {show ? <Modal showClose={handleClose} /> : null}
+      {show ? <Modal closeModal={closeModal} showClose={handleClose} /> : null}
 
 
       <br></br>

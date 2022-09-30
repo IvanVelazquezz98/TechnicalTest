@@ -3,7 +3,6 @@ import clsx from 'clsx'
 import { getData } from '../../Utils/GetData'
 import Cards from '../Cards/Cards'
 import useLazyLoad from '../LazyLoading/useLazyLoad';
-import { LoadingPosts } from '../Loading/LoadingPost';
 import styles from './Search.module.css'
 import Loader from '../Loading/Loader';
 
@@ -84,9 +83,9 @@ function Search({ changeTermDropdown, term }) {
 
           }
 
-          ) : <Loader/>}
+          ) : <Loader className={styles.loaderContainer} />}
 
-        <div ref={triggerRef} className={clsx('trigger', { visible: false })}> <LoadingPosts /></div>
+        <div ref={triggerRef} className={clsx('trigger', { visible: false })}> <Loader/> </div>
 
       </div>
     </div>

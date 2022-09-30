@@ -57,7 +57,7 @@ export async function getData() {
 
     }
 
-export async function traermas(list){
+export async function fetchMore(list){
    
     const clientCollectionn = collection(db, "clientes")
     const refQuery = query(clientCollectionn, limit(5) , orderBy("codigo"), startAfter(list));
