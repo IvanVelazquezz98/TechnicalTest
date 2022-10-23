@@ -15,7 +15,6 @@ Desarrollar usando reactjs un componente de tipo dropdown (o combobox)
 
 ///////////////////////////////////////
 
-Nota del programador: Me la pase muy bien resolviendo su prueba técnica, todos los requisitos están completos, espero que pronto estemos trabajando juntos. ¡Un saludo!
 
 Linkedin: https://www.linkedin.com/in/ivan-velazquez-a095aa243/
 Portfolio: https://portfolio-ivan-velazquez.netlify.app/
